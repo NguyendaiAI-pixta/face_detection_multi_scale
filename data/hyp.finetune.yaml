@@ -1,0 +1,33 @@
+# Hyperparameters for fine-tuning with multiple datasets
+# Optimized for enhanced face detection with diverse data
+
+lr0: 0.001  # Lower learning rate for fine-tuning
+lrf: 0.1    # Final learning rate
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# Loss gains
+box: 0.05
+cls: 0.3
+obj: 0.7
+anchor_t: 4.0
+
+# Augmentation (moderate for diverse datasets)
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+mosaic: 0.8
+mixup: 0.1
+
+# Label smoothing for better generalization
+label_smoothing: 0.1

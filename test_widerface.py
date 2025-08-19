@@ -16,7 +16,18 @@ from utils.general import check_img_size, check_requirements, check_imshow, non_
 from utils.plots import colors, plot_one_box
 from utils.torch_utils import select_device, load_classifier, time_synchronized
 import numpy as np
-
+'''
+đánh giá tập val theo 3 mức độ chuẩn benmark
+python test_widerface.py \
+    --weights yolov7-w6-face.pt \
+    --dataset_folder data/widerface/val/images/ \
+    --save_folder ./widerface_evaluate/widerface_txt/ \
+    --conf-thres 0.01 \
+    --iou-thres 0.5 \
+    --device 0
+cd widerface_evaluate(tính map)
+python evaluation.py --pred ./widerface_txt/ --gt ./ground_truth/
+'''
 def detect(opt):
     weights, imgsz, kpt_label = opt.weights, opt.img_size, opt.kpt_label
 

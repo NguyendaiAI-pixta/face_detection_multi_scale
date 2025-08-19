@@ -1,0 +1,65 @@
+🎯 WiderFace Dataset Visualizer
+📊 Statistics only mode
+📂 Data directory: /mnt/md0/projects/nguyendai-footage
+
+📊 Analyzing TRAIN split...
+   Images: 12,880
+   Total faces: 159,420
+   Valid faces: 157,021 (98.5%)
+   Invalid faces: 2,399 (1.5%)
+   Avg faces/image: 12.4
+
+📊 Analyzing VAL split...
+   Images: 3,226
+   Total faces: 39,708
+   Valid faces: 39,123 (98.5%)
+   Invalid faces: 585 (1.5%)
+   Avg faces/image: 12.3
+
+📊 Analyzing TEST split...
+   Images: 16097
+   Faces: N/A (test set has no annotations)
+
+============================================================
+📊 WIDERFACE DATASET COMPREHENSIVE STATISTICS
+============================================================
+
+🎯 OVERALL SUMMARY:
+   Total images (train+val): 32,203
+   Total images (including test): 48,300
+   Total faces: 199,128
+   ✅ Usable for training: 196,144 (98.5%)
+   ❌ Invalid faces: 2,984 (1.5%)
+
+📏 FACE SIZES:
+   Small faces (<32x32): 146,097 (73.4%)
+   Medium faces (32-96): 41,364 (20.8%)
+   Large faces (>96x96): 11,667 (5.9%)
+
+🌫️  QUALITY ISSUES:
+   Blurry faces: 170,651 (85.7%)
+   Occluded faces: 79,456 (39.9%)
+
+📋 DETAILED SPLIT BREAKDOWN:
+
+   TRAIN SET:
+      Images: 12,880
+      Total faces: 159,420
+      Valid faces: 157,021
+      Invalid faces: 2,399
+      Average faces/image: 12.4
+
+   VAL SET:
+      Images: 3,226
+      Total faces: 39,708
+      Valid faces: 39,123
+      Invalid faces: 585
+      Average faces/image: 12.3
+
+   TEST SET:
+      Images: 16,097
+      Faces: N/A (no annotations)
+
+✨ TRAINING RECOMMENDATIONS:
+   🟢 Excellent! 98.5% of faces are valid for training
+    ⚠️  73.4% are small faces - consider min_size filtering for better training

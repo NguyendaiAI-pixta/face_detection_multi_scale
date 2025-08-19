@@ -68,7 +68,7 @@ def train(hyp, opt, device, tb_writer=None):
     loggers = {'wandb': None}  # loggers dict
     if rank in [-1, 0]:
         opt.hyp = hyp  # add hyperparameters
-        run_id = torch.load(weights).get('wandb_id') if weights.endswith('.pt') and os.path.isfile(weights) else None
+        run_id = torch.load(weights, weights_only=False).get('wandb_id') if weights.endswith('.pt') and os.path.isfile(weights) else None
         wandb_logger = WandbLogger(opt, save_dir.stem, run_id, data_dict)
         loggers['wandb'] = wandb_logger.wandb
         data_dict = wandb_logger.data_dict
@@ -84,7 +84,7 @@ def train(hyp, opt, device, tb_writer=None):
     if pretrained:
         with torch_distributed_zero_first(rank):
             attempt_download(weights)  # download if not found locally
-        ckpt = torch.load(weights, map_location=device)  # load checkpoint
+        ckpt = torch.load(weights, map_location=device, weights_only=False)  # load checkpoint
         model = Model(opt.cfg or ckpt['model'].yaml, ch=3, nc=nc, anchors=hyp.get('anchors')).to(device)  # create
         exclude = ['anchor'] if (opt.cfg or hyp.get('anchors')) and not opt.resume else []  # exclude keys
         state_dict = ckpt['model'].float().state_dict()  # to FP32
@@ -202,23 +202,81 @@ def train(hyp, opt, device, tb_writer=None):
                                             hyp=hyp, augment=True, cache=opt.cache_images, rect=opt.rect, rank=rank,
                                             world_size=opt.world_size, workers=opt.workers,
                                             image_weights=opt.image_weights, quad=opt.quad, prefix=colorstr('train: '), kpt_label=kpt_label)
-    mlc = np.concatenate(dataset.labels, 0)[:, 0].max()  # max label class
+    
+    # DEBUG: Detailed dataset investigation
+    logger.info(f'DEBUG: Raw dataset info:')
+    logger.info(f'DEBUG: train_path: {train_path}')
+    logger.info(f'DEBUG: dataset.imgs length: {len(dataset.imgs) if hasattr(dataset, "imgs") else "No imgs attr"}')
+    logger.info(f'DEBUG: dataset.labels length: {len(dataset.labels)}')
+    logger.info(f'DEBUG: dataset.labels type: {type(dataset.labels)}')
+    
+    if hasattr(dataset, 'imgs') and len(dataset.imgs) > 0:
+        logger.info(f'DEBUG: First 3 image paths: {dataset.imgs[:3]}')
+    
+    if len(dataset.labels) > 0:
+        for i, label in enumerate(dataset.labels[:3]):
+            logger.info(f'DEBUG: Label {i} shape: {label.shape if hasattr(label, "shape") else len(label)} - content: {label[:3] if len(label) > 3 else label}')
+    
+    # Check if we have any valid labels
+    all_labels = np.concatenate(dataset.labels, 0) if len(dataset.labels) > 0 else np.array([[0]])
+    mlc = all_labels[:, 0].max() if len(all_labels) > 0 else 0  # max label class
     nb = len(dataloader)  # number of batches
+    
+    # DEBUG: Print dataset info
+    logger.info(f'DEBUG: Dataset loaded with {len(dataset.labels)} label files')
+    logger.info(f'DEBUG: Total labels shape: {all_labels.shape}')
+    logger.info(f'DEBUG: Max label class: {mlc}, nc: {nc}')
+    logger.info(f'DEBUG: Sample labels: {all_labels[:5] if len(all_labels) > 5 else all_labels}')
+    
     assert mlc < nc, 'Label class %g exceeds nc=%g in %s. Possible class labels are 0-%g' % (mlc, nc, opt.data, nc - 1)
 
     # Process 0
     if rank in [-1, 0]:
-        testloader = create_dataloader(test_path, imgsz_test, batch_size * 2, gs, opt,  # testloader
+        testloader, val_dataset = create_dataloader(test_path, imgsz_test, batch_size * 2, gs, opt,  # testloader
                                        hyp=hyp, cache=opt.cache_images and not opt.notest, rect=True, rank=-1,
                                        world_size=opt.world_size, workers=opt.workers,
-                                       pad=0.5, prefix=colorstr('val: '), kpt_label=kpt_label)[0]
+                                       pad=0.5, prefix=colorstr('val: '), kpt_label=kpt_label)
+        
+        # DEBUG: Detailed validation dataset investigation
+        logger.info(f'DEBUG: Raw validation dataset info:')
+        logger.info(f'DEBUG: test_path: {test_path}')
+        logger.info(f'DEBUG: val_dataset.imgs length: {len(val_dataset.imgs) if hasattr(val_dataset, "imgs") else "No imgs attr"}')
+        logger.info(f'DEBUG: val_dataset.labels length: {len(val_dataset.labels)}')
+        logger.info(f'DEBUG: val_dataset.labels type: {type(val_dataset.labels)}')
+        
+        if hasattr(val_dataset, 'imgs') and len(val_dataset.imgs) > 0:
+            logger.info(f'DEBUG: First 3 val image paths: {val_dataset.imgs[:3]}')
+        
+        if len(val_dataset.labels) > 0:
+            for i, label in enumerate(val_dataset.labels[:3]):
+                logger.info(f'DEBUG: Val Label {i} shape: {label.shape if hasattr(label, "shape") else len(label)} - content: {label[:3] if len(label) > 3 else label}')
+        
+        # DEBUG: Print validation dataset info
+        logger.info(f'DEBUG: Validation dataset info:')
+        logger.info(f'DEBUG: Validation path: {test_path}')
+        logger.info(f'DEBUG: Validation dataset labels count: {len(val_dataset.labels)}')
+        if len(val_dataset.labels) > 0:
+            val_labels = np.concatenate(val_dataset.labels, 0) if len(val_dataset.labels) > 0 else np.array([[0]])
+            logger.info(f'DEBUG: Validation labels shape: {val_labels.shape}')
+            logger.info(f'DEBUG: Sample val labels: {val_labels[:3] if len(val_labels) > 3 else val_labels}')
+        else:
+            logger.info(f'DEBUG: No validation labels found!')
+        logger.info(f'DEBUG: Testloader batches: {len(testloader)}')
+        
+        testloader = testloader  # Keep only the dataloader
 
         if not opt.resume:
-            labels = np.concatenate(dataset.labels, 0)
+            labels = np.concatenate(dataset.labels, 0) if len(dataset.labels) > 0 else np.array([[0, 0, 0, 0, 0]])
             c = torch.tensor(labels[:, 0])  # classes
+            
+            # DEBUG: Print validation dataset info
+            logger.info(f'DEBUG: Validation dataset info:')
+            logger.info(f'DEBUG: Testloader batches: {len(testloader)}')
+            logger.info(f'DEBUG: Labels shape for plotting: {labels.shape}')
+            
             # cf = torch.bincount(c.long(), minlength=nc) + 1.  # frequency
             # model._initialize_biases(cf.to(device))
-            if plots:
+            if plots and len(labels) > 1:  # Only plot if we have real labels
                 plot_labels(labels, names, save_dir, loggers)
                 if tb_writer:
                     tb_writer.add_histogram('classes', c, 0)
@@ -473,12 +531,12 @@ def train(hyp, opt, device, tb_writer=None):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', type=str, default='', help='initial weights path')
-    parser.add_argument('--cfg', type=str, default='cfg/yolov7-tiny-face.yaml', help='model.yaml path')
+    parser.add_argument('--cfg', type=str, default='cfg/yolov7-face.yaml', help='model.yaml path')
     parser.add_argument('--data', type=str, default='data/widerface.yaml', help='data.yaml path')
-    parser.add_argument('--hyp', type=str, default='data/hyp.scratch.tiny.yaml', help='hyperparameters path')
+    parser.add_argument('--hyp', type=str, default='data/hyp.scratch.p6.yaml', help='hyperparameters path')
     parser.add_argument('--epochs', type=int, default=300)
-    parser.add_argument('--batch-size', type=int, default=32, help='total batch size for all GPUs')
-    parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='[train, test] image sizes')
+    parser.add_argument('--batch-size', type=int, default=128, help='total batch size for all GPUs')
+    parser.add_argument('--img-size', nargs='+', type=int, default=[960, 960], help='[train, test] image sizes')
     parser.add_argument('--rect', action='store_true', help='rectangular training')
     parser.add_argument('--resume', nargs='?', const=True, default=False, help='resume most recent training')
     parser.add_argument('--nosave', action='store_true', help='only save final checkpoint')
@@ -488,13 +546,13 @@ if __name__ == '__main__':
     parser.add_argument('--bucket', type=str, default='', help='gsutil bucket')
     parser.add_argument('--cache-images', action='store_true', help='cache images for faster training')
     parser.add_argument('--image-weights', action='store_true', help='use weighted image selection for training')
-    parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+    parser.add_argument('--device', default='2', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument('--multi-scale', action='store_true', help='vary img-size +/- 50%%')
     parser.add_argument('--single-cls', action='store_true', help='train multi-class data as single-class')
     parser.add_argument('--adam', action='store_true', help='use torch.optim.Adam() optimizer')
     parser.add_argument('--sync-bn', action='store_true', help='use SyncBatchNorm, only available in DDP mode')
     parser.add_argument('--local_rank', type=int, default=-1, help='DDP parameter, do not modify')
-    parser.add_argument('--workers', type=int, default=8, help='maximum number of dataloader workers')
+    parser.add_argument('--workers', type=int, default=16, help='maximum number of dataloader workers')
     parser.add_argument('--project', default='runs/train', help='save to project/name')
     parser.add_argument('--entity', default=None, help='W&B entity')
     parser.add_argument('--name', default='exp', help='save to project/name')

@@ -1,0 +1,600 @@
+# Event categories with invalid faces
+
+
+=== TRAIN SPLIT ===
+
+Traffic:
+  Images: 76, Invalid images: 12
+  Faces: 1246, Invalid faces: 228 (18.3%)
+  Sample images:
+    14--Traffic/14_Traffic_Traffic_14_290.jpg
+    14--Traffic/14_Traffic_Traffic_14_303.jpg
+    14--Traffic/14_Traffic_Traffic_14_300.jpg
+
+People_Marching:
+  Images: 223, Invalid images: 30
+  Faces: 5550, Invalid faces: 364 (6.6%)
+  Sample images:
+    10--People_Marching/10_People_Marching_People_Marching_10_People_Marching_People_Marching_10_People_Marching_People_Marching_10_99.jpg
+    10--People_Marching/10_People_Marching_People_Marching_2_104.jpg
+    10--People_Marching/10_People_Marching_People_Marching_2_143.jpg
+
+people:
+  Images: 127, Invalid images: 6
+  Faces: 401, Invalid faces: 19 (4.7%)
+  Sample images:
+    59--people--driving--car/59_peopledrivingcar_peopledrivingcar_59_569.jpg
+    59--people--driving--car/59_peopledrivingcar_peopledrivingcar_59_502.jpg
+    59--people--driving--car/59_peopledrivingcar_peopledrivingcar_59_335.jpg
+
+Parade:
+  Images: 460, Invalid images: 93
+  Faces: 16863, Invalid faces: 513 (3.0%)
+  Sample images:
+    0--Parade/0_Parade_Parade_0_343.jpg
+    0--Parade/0_Parade_Parade_0_337.jpg
+    0--Parade/0_Parade_Parade_0_90.jpg
+
+Raid:
+  Images: 178, Invalid images: 4
+  Faces: 1035, Invalid faces: 30 (2.9%)
+  Sample images:
+    53--Raid/53_Raid_policeraid_53_576.jpg
+    53--Raid/53_Raid_policeraid_53_676.jpg
+    53--Raid/53_Raid_policeraid_53_809.jpg
+
+Basketball:
+  Images: 525, Invalid images: 35
+  Faces: 11476, Invalid faces: 332 (2.9%)
+  Sample images:
+    35--Basketball/35_Basketball_basketballgame_ball_35_328.jpg
+    35--Basketball/35_Basketball_basketballgame_ball_35_805.jpg
+    35--Basketball/35_Basketball_basketballgame_ball_35_289.jpg
+
+Tennis:
+  Images: 139, Invalid images: 4
+  Faces: 522, Invalid faces: 15 (2.9%)
+  Sample images:
+    38--Tennis/38_Tennis_Tennis_38_574.jpg
+    38--Tennis/38_Tennis_Tennis_38_774.jpg
+    38--Tennis/38_Tennis_Tennis_38_308.jpg
+
+Funeral:
+  Images: 170, Invalid images: 7
+  Faces: 2432, Invalid faces: 62 (2.5%)
+  Sample images:
+    6--Funeral/6_Funeral_Funeral_6_335.jpg
+    6--Funeral/6_Funeral_Funeral_6_452.jpg
+    6--Funeral/6_Funeral_Funeral_6_516.jpg
+
+Worker_Laborer:
+  Images: 178, Invalid images: 2
+  Faces: 429, Invalid faces: 7 (1.6%)
+  Sample images:
+    32--Worker_Laborer/32_Worker_Laborer_Worker_Laborer_32_1030.jpg
+    32--Worker_Laborer/32_Worker_Laborer_Worker_Laborer_32_565.jpg
+
+Election_Campain:
+  Images: 132, Invalid images: 12
+  Faces: 4076, Invalid faces: 64 (1.6%)
+  Sample images:
+    8--Election_Campain/8_Election_Campain_Election_Campaign_8_531.jpg
+    8--Election_Campain/8_Election_Campain_Election_Campaign_8_405.jpg
+    8--Election_Campain/8_Election_Campain_Election_Campaign_8_181.jpg
+
+Stock_Market:
+  Images: 75, Invalid images: 3
+  Faces: 538, Invalid faces: 7 (1.3%)
+  Sample images:
+    15--Stock_Market/15_Stock_Market_Stock_Market_15_1013.jpg
+    15--Stock_Market/15_Stock_Market_Stock_Market_15_735.jpg
+    15--Stock_Market/15_Stock_Market_Stock_Market_15_465.jpg
+
+Photographers:
+  Images: 233, Invalid images: 2
+  Faces: 783, Invalid faces: 10 (1.3%)
+  Sample images:
+    52--Photographers/52_Photographers_photographertakingphoto_52_620.jpg
+    52--Photographers/52_Photographers_taketouristphotos_52_151.jpg
+
+Group:
+  Images: 582, Invalid images: 33
+  Faces: 12153, Invalid faces: 144 (1.2%)
+  Sample images:
+    12--Group/12_Group_Team_Organized_Group_12_Group_Team_Organized_Group_12_766.jpg
+    12--Group/12_Group_Large_Group_12_Group_Large_Group_12_144.jpg
+    12--Group/12_Group_Group_12_Group_Group_12_719.jpg
+
+Voter:
+  Images: 198, Invalid images: 4
+  Faces: 1429, Invalid faces: 16 (1.1%)
+  Sample images:
+    56--Voter/56_Voter_peoplevoting_56_407.jpg
+    56--Voter/56_Voter_peoplevoting_56_397.jpg
+    56--Voter/56_Voter_peoplevoting_56_88.jpg
+
+Jockey:
+  Images: 122, Invalid images: 3
+  Faces: 855, Invalid faces: 9 (1.1%)
+  Sample images:
+    46--Jockey/46_Jockey_Jockey_46_488.jpg
+    46--Jockey/46_Jockey_Jockey_46_877.jpg
+    46--Jockey/46_Jockey_Jockey_46_182.jpg
+
+Ice_Skating:
+  Images: 315, Invalid images: 17
+  Faces: 2546, Invalid faces: 26 (1.0%)
+  Sample images:
+    39--Ice_Skating/39_Ice_Skating_Ice_Skating_39_361.jpg
+    39--Ice_Skating/39_Ice_Skating_Ice_Skating_39_318.jpg
+    39--Ice_Skating/39_Ice_Skating_Ice_Skating_39_640.jpg
+
+Riot:
+  Images: 159, Invalid images: 7
+  Faces: 1698, Invalid faces: 17 (1.0%)
+  Sample images:
+    3--Riot/3_Riot_Riot_3_254.jpg
+    3--Riot/3_Riot_Riot_3_138.jpg
+    3--Riot/3_Riot_Riot_3_449.jpg
+
+Interview:
+  Images: 569, Invalid images: 9
+  Faces: 1724, Invalid faces: 17 (1.0%)
+  Sample images:
+    13--Interview/13_Interview_Interview_Sequences_13_827.jpg
+    13--Interview/13_Interview_Interview_2_People_Visible_13_69.jpg
+    13--Interview/13_Interview_Interview_On_Location_13_570.jpg
+
+Greeting:
+  Images: 164, Invalid images: 4
+  Faces: 1187, Invalid faces: 11 (0.9%)
+  Sample images:
+    49--Greeting/49_Greeting_peoplegreeting_49_410.jpg
+    49--Greeting/49_Greeting_peoplegreeting_49_402.jpg
+    49--Greeting/49_Greeting_peoplegreeting_49_43.jpg
+
+Demonstration:
+  Images: 995, Invalid images: 83
+  Faces: 36449, Invalid faces: 336 (0.9%)
+  Sample images:
+    2--Demonstration/2_Demonstration_Demonstration_Or_Protest_2_179.jpg
+    2--Demonstration/2_Demonstration_Protesters_2_325.jpg
+    2--Demonstration/2_Demonstration_Demonstrators_2_718.jpg
+
+Award_Ceremony:
+  Images: 181, Invalid images: 2
+  Faces: 1035, Invalid faces: 9 (0.9%)
+  Sample images:
+    16--Award_Ceremony/16_Award_Ceremony_Awards_Ceremony_16_46.jpg
+    16--Award_Ceremony/16_Award_Ceremony_Awards_Ceremony_16_188.jpg
+
+Soccer:
+  Images: 219, Invalid images: 7
+  Faces: 2400, Invalid faces: 20 (0.8%)
+  Sample images:
+    37--Soccer/37_Soccer_soccer_ball_37_640.jpg
+    37--Soccer/37_Soccer_Soccer_37_851.jpg
+    37--Soccer/37_Soccer_Soccer_37_595.jpg
+
+Football:
+  Images: 167, Invalid images: 1
+  Faces: 1170, Invalid faces: 8 (0.7%)
+  Sample images:
+    36--Football/36_Football_Football_36_147.jpg
+
+Street_Battle:
+  Images: 126, Invalid images: 2
+  Faces: 737, Invalid faces: 5 (0.7%)
+  Sample images:
+    61--Street_Battle/61_Street_Battle_streetfight_61_443.jpg
+    61--Street_Battle/61_Street_Battle_streetfight_61_894.jpg
+
+Running:
+  Images: 105, Invalid images: 2
+  Faces: 467, Invalid faces: 3 (0.6%)
+  Sample images:
+    33--Running/33_Running_Running_33_779.jpg
+    33--Running/33_Running_Running_33_919.jpg
+
+Shoppers:
+  Images: 166, Invalid images: 5
+  Faces: 939, Invalid faces: 6 (0.6%)
+  Sample images:
+    23--Shoppers/23_Shoppers_Shoppers_23_373.jpg
+    23--Shoppers/23_Shoppers_Shoppers_23_675.jpg
+    23--Shoppers/23_Shoppers_Shoppers_23_842.jpg
+
+Matador_Bullfighter:
+  Images: 244, Invalid images: 4
+  Faces: 4297, Invalid faces: 26 (0.6%)
+  Sample images:
+    47--Matador_Bullfighter/47_Matador_Bullfighter_matadorbullfighting_47_280.jpg
+    47--Matador_Bullfighter/47_Matador_Bullfighter_Matador_Bullfighter_47_734.jpg
+    47--Matador_Bullfighter/47_Matador_Bullfighter_matadorbullfighting_47_442.jpg
+
+Hockey:
+  Images: 178, Invalid images: 7
+  Faces: 2496, Invalid faces: 15 (0.6%)
+  Sample images:
+    58--Hockey/58_Hockey_icehockey_puck_58_59.jpg
+    58--Hockey/58_Hockey_icehockey_puck_58_870.jpg
+    58--Hockey/58_Hockey_icehockey_puck_58_144.jpg
+
+Rescue:
+  Images: 216, Invalid images: 3
+  Faces: 1386, Invalid faces: 8 (0.6%)
+  Sample images:
+    54--Rescue/54_Rescue_rescuepeople_54_69.jpg
+    54--Rescue/54_Rescue_rescuepeople_54_393.jpg
+    54--Rescue/54_Rescue_rescuepeople_54_25.jpg
+
+Row_Boat:
+  Images: 170, Invalid images: 3
+  Faces: 577, Invalid faces: 3 (0.5%)
+  Sample images:
+    43--Row_Boat/43_Row_Boat_Rowboat_43_901.jpg
+    43--Row_Boat/43_Row_Boat_Canoe_43_782.jpg
+    43--Row_Boat/43_Row_Boat_Canoe_43_730.jpg
+
+Cheering:
+  Images: 163, Invalid images: 6
+  Faces: 4629, Invalid faces: 20 (0.4%)
+  Sample images:
+    7--Cheering/7_Cheering_Cheering_7_110.jpg
+    7--Cheering/7_Cheering_Cheering_7_801.jpg
+    7--Cheering/7_Cheering_Cheering_7_548.jpg
+
+Car_Accident:
+  Images: 195, Invalid images: 3
+  Faces: 1194, Invalid faces: 4 (0.3%)
+  Sample images:
+    5--Car_Accident/5_Car_Accident_Accident_5_58.jpg
+    5--Car_Accident/5_Car_Accident_Accident_5_458.jpg
+    5--Car_Accident/5_Car_Accident_Accident_5_326.jpg
+
+Soldier_Drilling:
+  Images: 156, Invalid images: 1
+  Faces: 1249, Invalid faces: 4 (0.3%)
+  Sample images:
+    26--Soldier_Drilling/26_Soldier_Drilling_Soldiers_Drilling_26_90.jpg
+
+Parachutist_Paratrooper:
+  Images: 76, Invalid images: 1
+  Faces: 315, Invalid faces: 1 (0.3%)
+  Sample images:
+    48--Parachutist_Paratrooper/48_Parachutist_Paratrooper_Parachutist_Paratrooper_48_258.jpg
+
+Concerts:
+  Images: 213, Invalid images: 4
+  Faces: 1987, Invalid faces: 6 (0.3%)
+  Sample images:
+    18--Concerts/18_Concerts_Concerts_18_731.jpg
+    18--Concerts/18_Concerts_Concerts_18_841.jpg
+    18--Concerts/18_Concerts_Concerts_18_989.jpg
+
+Picnic:
+  Images: 96, Invalid images: 2
+  Faces: 696, Invalid faces: 2 (0.3%)
+  Sample images:
+    22--Picnic/22_Picnic_Picnic_22_687.jpg
+    22--Picnic/22_Picnic_Picnic_22_134.jpg
+
+Baseball:
+  Images: 94, Invalid images: 2
+  Faces: 696, Invalid faces: 2 (0.3%)
+  Sample images:
+    34--Baseball/34_Baseball_Baseball_34_761.jpg
+    34--Baseball/34_Baseball_Baseball_34_46.jpg
+
+Swimming:
+  Images: 324, Invalid images: 1
+  Faces: 737, Invalid faces: 2 (0.3%)
+  Sample images:
+    41--Swimming/41_Swimming_Swimming_41_474.jpg
+
+Waiter_Waitress:
+  Images: 202, Invalid images: 2
+  Faces: 738, Invalid faces: 2 (0.3%)
+  Sample images:
+    31--Waiter_Waitress/31_Waiter_Waitress_Waiter_Waitress_31_728.jpg
+    31--Waiter_Waitress/31_Waiter_Waitress_Waiter_Waitress_31_203.jpg
+
+Balloonist:
+  Images: 134, Invalid images: 1
+  Faces: 386, Invalid faces: 1 (0.3%)
+  Sample images:
+    45--Balloonist/45_Balloonist_Balloonist_45_312.jpg
+
+Celebration_Or_Party:
+  Images: 196, Invalid images: 3
+  Faces: 1598, Invalid faces: 4 (0.3%)
+  Sample images:
+    50--Celebration_Or_Party/50_Celebration_Or_Party_houseparty_50_1018.jpg
+    50--Celebration_Or_Party/50_Celebration_Or_Party_houseparty_50_523.jpg
+    50--Celebration_Or_Party/50_Celebration_Or_Party_houseparty_50_16.jpg
+
+Soldier_Firing:
+  Images: 137, Invalid images: 1
+  Faces: 429, Invalid faces: 1 (0.2%)
+  Sample images:
+    24--Soldier_Firing/24_Soldier_Firing_Soldier_Firing_24_211.jpg
+
+Sports_Fan:
+  Images: 184, Invalid images: 3
+  Faces: 1913, Invalid faces: 4 (0.2%)
+  Sample images:
+    28--Sports_Fan/28_Sports_Fan_Sports_Fan_28_113.jpg
+    28--Sports_Fan/28_Sports_Fan_Sports_Fan_28_248.jpg
+    28--Sports_Fan/28_Sports_Fan_Sports_Fan_28_338.jpg
+
+Festival:
+  Images: 180, Invalid images: 5
+  Faces: 4161, Invalid faces: 8 (0.2%)
+  Sample images:
+    21--Festival/21_Festival_Festival_21_41.jpg
+    21--Festival/21_Festival_Festival_21_172.jpg
+    21--Festival/21_Festival_Festival_21_174.jpg
+
+Car_Racing:
+  Images: 80, Invalid images: 1
+  Faces: 702, Invalid faces: 1 (0.1%)
+  Sample images:
+    42--Car_Racing/42_Car_Racing_Car_Racing_42_247.jpg
+
+Ceremony:
+  Images: 150, Invalid images: 2
+  Faces: 3007, Invalid faces: 4 (0.1%)
+  Sample images:
+    17--Ceremony/17_Ceremony_Ceremony_17_717.jpg
+    17--Ceremony/17_Ceremony_Ceremony_17_50.jpg
+
+Gymnastics:
+  Images: 259, Invalid images: 1
+  Faces: 1581, Invalid faces: 1 (0.1%)
+  Sample images:
+    40--Gymnastics/40_Gymnastics_Gymnastics_40_182.jpg
+
+Students_Schoolkids:
+  Images: 198, Invalid images: 1
+  Faces: 1619, Invalid faces: 1 (0.1%)
+  Sample images:
+    29--Students_Schoolkids/29_Students_Schoolkids_Students_Schoolkids_29_709.jpg
+
+Family_Group:
+  Images: 233, Invalid images: 1
+  Faces: 2999, Invalid faces: 1 (0.0%)
+  Sample images:
+    20--Family_Group/20_Family_Group_Family_Group_20_734.jpg
+
+=== VAL SPLIT ===
+
+Voter:
+  Images: 50, Invalid images: 3
+  Faces: 491, Invalid faces: 55 (11.2%)
+  Sample images:
+    56--Voter/56_Voter_peoplevoting_56_350.jpg
+    56--Voter/56_Voter_peoplevoting_56_228.jpg
+    56--Voter/56_Voter_peoplevoting_56_558.jpg
+
+Parade:
+  Images: 115, Invalid images: 28
+  Faces: 3948, Invalid faces: 195 (4.9%)
+  Sample images:
+    0--Parade/0_Parade_marchingband_1_465.jpg
+    0--Parade/0_Parade_Parade_0_628.jpg
+    0--Parade/0_Parade_Parade_0_814.jpg
+
+Ceremony:
+  Images: 38, Invalid images: 1
+  Faces: 453, Invalid faces: 21 (4.6%)
+  Sample images:
+    17--Ceremony/17_Ceremony_Ceremony_17_253.jpg
+
+People_Marching:
+  Images: 56, Invalid images: 12
+  Faces: 2275, Invalid faces: 96 (4.2%)
+  Sample images:
+    10--People_Marching/10_People_Marching_People_Marching_10_People_Marching_People_Marching_10_People_Marching_People_Marching_10_674.jpg
+    10--People_Marching/10_People_Marching_People_Marching_2_40.jpg
+    10--People_Marching/10_People_Marching_People_Marching_2_1046.jpg
+
+Shoppers:
+  Images: 42, Invalid images: 4
+  Faces: 281, Invalid faces: 8 (2.8%)
+  Sample images:
+    23--Shoppers/23_Shoppers_Shoppers_23_271.jpg
+    23--Shoppers/23_Shoppers_Shoppers_23_459.jpg
+    23--Shoppers/23_Shoppers_Shoppers_23_511.jpg
+
+Traffic:
+  Images: 19, Invalid images: 4
+  Faces: 279, Invalid faces: 7 (2.5%)
+  Sample images:
+    14--Traffic/14_Traffic_Traffic_14_361.jpg
+    14--Traffic/14_Traffic_Traffic_14_170.jpg
+    14--Traffic/14_Traffic_Traffic_14_840.jpg
+
+Jockey:
+  Images: 31, Invalid images: 1
+  Faces: 143, Invalid faces: 3 (2.1%)
+  Sample images:
+    46--Jockey/46_Jockey_Jockey_46_569.jpg
+
+Car_Racing:
+  Images: 20, Invalid images: 1
+  Faces: 102, Invalid faces: 2 (2.0%)
+  Sample images:
+    42--Car_Racing/42_Car_Racing_Car_Racing_42_602.jpg
+
+Basketball:
+  Images: 131, Invalid images: 14
+  Faces: 3644, Invalid faces: 58 (1.6%)
+  Sample images:
+    35--Basketball/35_Basketball_basketballgame_ball_35_565.jpg
+    35--Basketball/35_Basketball_Basketball_35_209.jpg
+    35--Basketball/35_Basketball_playingbasketball_35_362.jpg
+
+Interview:
+  Images: 142, Invalid images: 5
+  Faces: 466, Invalid faces: 7 (1.5%)
+  Sample images:
+    13--Interview/13_Interview_Interview_2_People_Visible_13_442.jpg
+    13--Interview/13_Interview_Interview_2_People_Visible_13_189.jpg
+    13--Interview/13_Interview_Interview_On_Location_13_138.jpg
+
+Soccer:
+  Images: 55, Invalid images: 1
+  Faces: 528, Invalid faces: 7 (1.3%)
+  Sample images:
+    37--Soccer/37_Soccer_soccer_ball_37_583.jpg
+
+Matador_Bullfighter:
+  Images: 61, Invalid images: 1
+  Faces: 1077, Invalid faces: 13 (1.2%)
+  Sample images:
+    47--Matador_Bullfighter/47_Matador_Bullfighter_matadorbullfighting_47_511.jpg
+
+Ice_Skating:
+  Images: 79, Invalid images: 4
+  Faces: 444, Invalid faces: 5 (1.1%)
+  Sample images:
+    39--Ice_Skating/39_Ice_Skating_Ice_Skating_39_661.jpg
+    39--Ice_Skating/39_Ice_Skating_Ice_Skating_39_463.jpg
+    39--Ice_Skating/39_Ice_Skating_Ice_Skating_39_546.jpg
+
+Award_Ceremony:
+  Images: 45, Invalid images: 1
+  Faces: 212, Invalid faces: 2 (0.9%)
+  Sample images:
+    16--Award_Ceremony/16_Award_Ceremony_Awards_Ceremony_16_4.jpg
+
+Meeting:
+  Images: 33, Invalid images: 4
+  Faces: 829, Invalid faces: 7 (0.8%)
+  Sample images:
+    11--Meeting/11_Meeting_Meeting_11_Meeting_Meeting_11_774.jpg
+    11--Meeting/11_Meeting_Meeting_11_Meeting_Meeting_11_507.jpg
+    11--Meeting/11_Meeting_Meeting_11_Meeting_Meeting_11_587.jpg
+
+Riot:
+  Images: 40, Invalid images: 1
+  Faces: 487, Invalid faces: 4 (0.8%)
+  Sample images:
+    3--Riot/3_Riot_Riot_3_542.jpg
+
+Angler:
+  Images: 40, Invalid images: 1
+  Faces: 133, Invalid faces: 1 (0.8%)
+  Sample images:
+    57--Angler/57_Angler_peoplefishing_57_139.jpg
+
+Funeral:
+  Images: 42, Invalid images: 1
+  Faces: 434, Invalid faces: 3 (0.7%)
+  Sample images:
+    6--Funeral/6_Funeral_Funeral_6_77.jpg
+
+Photographers:
+  Images: 58, Invalid images: 1
+  Faces: 148, Invalid faces: 1 (0.7%)
+  Sample images:
+    52--Photographers/52_Photographers_taketouristphotos_52_266.jpg
+
+Rescue:
+  Images: 54, Invalid images: 1
+  Faces: 297, Invalid faces: 2 (0.7%)
+  Sample images:
+    54--Rescue/54_Rescue_rescuepeople_54_602.jpg
+
+Handshaking:
+  Images: 30, Invalid images: 1
+  Faces: 307, Invalid faces: 2 (0.7%)
+  Sample images:
+    1--Handshaking/1_Handshaking_Handshaking_1_602.jpg
+
+Demonstration:
+  Images: 249, Invalid images: 22
+  Faces: 9108, Invalid faces: 59 (0.6%)
+  Sample images:
+    2--Demonstration/2_Demonstration_Demonstrators_2_329.jpg
+    2--Demonstration/2_Demonstration_Protesters_2_811.jpg
+    2--Demonstration/2_Demonstration_Demonstrators_2_713.jpg
+
+Car_Accident:
+  Images: 49, Invalid images: 3
+  Faces: 468, Invalid faces: 3 (0.6%)
+  Sample images:
+    5--Car_Accident/5_Car_Accident_Accident_5_448.jpg
+    5--Car_Accident/5_Car_Accident_Accident_5_460.jpg
+    5--Car_Accident/5_Car_Accident_Accident_5_287.jpg
+
+Row_Boat:
+  Images: 43, Invalid images: 1
+  Faces: 160, Invalid faces: 1 (0.6%)
+  Sample images:
+    43--Row_Boat/43_Row_Boat_Canoe_43_942.jpg
+
+Election_Campain:
+  Images: 33, Invalid images: 4
+  Faces: 836, Invalid faces: 5 (0.6%)
+  Sample images:
+    8--Election_Campain/8_Election_Campain_Election_Campaign_8_412.jpg
+    8--Election_Campain/8_Election_Campain_Election_Campaign_8_174.jpg
+    8--Election_Campain/8_Election_Campain_Election_Campaign_8_118.jpg
+
+Greeting:
+  Images: 41, Invalid images: 1
+  Faces: 174, Invalid faces: 1 (0.6%)
+  Sample images:
+    49--Greeting/49_Greeting_peoplegreeting_49_387.jpg
+
+Soldier_Patrol:
+  Images: 47, Invalid images: 1
+  Faces: 186, Invalid faces: 1 (0.5%)
+  Sample images:
+    25--Soldier_Patrol/25_Soldier_Patrol_Soldier_Patrol_25_869.jpg
+
+Dancing:
+  Images: 43, Invalid images: 1
+  Faces: 214, Invalid faces: 1 (0.5%)
+  Sample images:
+    4--Dancing/4_Dancing_Dancing_4_1043.jpg
+
+Family_Group:
+  Images: 58, Invalid images: 1
+  Faces: 564, Invalid faces: 2 (0.4%)
+  Sample images:
+    20--Family_Group/20_Family_Group_Family_Group_20_799.jpg
+
+Sports_Fan:
+  Images: 46, Invalid images: 1
+  Faces: 571, Invalid faces: 2 (0.4%)
+  Sample images:
+    28--Sports_Fan/28_Sports_Fan_Sports_Fan_28_7.jpg
+
+Soldier_Drilling:
+  Images: 39, Invalid images: 1
+  Faces: 344, Invalid faces: 1 (0.3%)
+  Sample images:
+    26--Soldier_Drilling/26_Soldier_Drilling_Soldiers_Drilling_26_85.jpg
+
+Festival:
+  Images: 45, Invalid images: 2
+  Faces: 1036, Invalid faces: 3 (0.3%)
+  Sample images:
+    21--Festival/21_Festival_Festival_21_340.jpg
+    21--Festival/21_Festival_Festival_21_42.jpg
+
+Group:
+  Images: 146, Invalid images: 5
+  Faces: 2542, Invalid faces: 6 (0.2%)
+  Sample images:
+    12--Group/12_Group_Group_12_Group_Group_12_843.jpg
+    12--Group/12_Group_Group_12_Group_Group_12_519.jpg
+    12--Group/12_Group_Large_Group_12_Group_Large_Group_12_120.jpg
+
+Cheering:
+  Images: 41, Invalid images: 1
+  Faces: 767, Invalid faces: 1 (0.1%)
+  Sample images:
+    7--Cheering/7_Cheering_Cheering_7_530.jpg

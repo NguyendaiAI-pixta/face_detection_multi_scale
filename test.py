@@ -17,7 +17,26 @@ from utils.metrics import ap_per_class, ConfusionMatrix
 from utils.plots import plot_images, output_to_target, plot_study_txt
 from utils.torch_utils import select_device, time_synchronized
 import cv2
+''''
+# Test model trên WiderFace validation set
+python test.py --data data/widerface.yaml --weights yolov7-w6-face.pt --device 0
 
+# Với các options khác
+python test.py \
+    --data data/widerface.yaml \
+    --weights yolov7-w6-face.pt \
+    --batch-size 16 \
+    --img-size 640 \
+    --conf-thres 0.001 \
+    --iou-thres 0.6 \
+    --device 0 \
+    --verbose
+✅ Đánh giá model sau khi train
+✅ So sánh các checkpoint khác nhau
+✅ Báo cáo kết quả chính thức
+✅ Debugging model performance
+mặc định là đánh giá qua val để ra metric khác 
+'''
 
 def test(data,
          weights=None,

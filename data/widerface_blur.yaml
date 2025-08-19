@@ -1,0 +1,27 @@
+# WiderFace Blur Dataset Configuration
+# Combined dataset: Original WiderFace + Blur Variants
+# For robust face detection training
+
+# Dataset paths
+train: WIDER_train/images  # Original training images
+val: WIDER_val/images      # Original validation images
+
+# Blur dataset paths (to be merged)
+blur_train: blur_dataset/images  # Blur variants for training
+blur_labels: blur_dataset/labels # Corresponding labels
+
+# Classes
+nc: 1  # number of classes
+names: ['face']  # class names
+
+# Dataset statistics
+# Original WIDER_train: ~16,551 images
+# Blur variants: ~1,800 images (600 * 3 blur levels)
+# Total training: ~18,351 images
+
+# Training instructions:
+# 1. Merge blur dataset into training:
+#    ln -s ../../blur_dataset/images/* WIDER_train/images/
+#    ln -s ../../blur_dataset/labels/* WIDER_train/labels/
+# 
+# 2. Or update paths to point to combined directory structure

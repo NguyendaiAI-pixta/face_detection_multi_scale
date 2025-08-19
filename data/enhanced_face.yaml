@@ -1,0 +1,7 @@
+# number of classes
+nc: 1
+
+# class names
+names: [ 'face']
+train: /mnt/md0/projects/nguyendai-footage/enhanced_face_dataset/train/images/
+val: /mnt/md0/projects/nguyendai-footage/enhanced_face_dataset/val/images/

@@ -117,7 +117,12 @@ def attempt_load(weights, map_location=None, inplace=True):
     model = Ensemble()
     for w in weights if isinstance(weights, list) else [weights]:
         attempt_download(w)
-        ckpt = torch.load(w, map_location=map_location)  # load
+        # Fix for PyTorch >=2.6: always load with weights_only=False
+        try:
+            ckpt = torch.load(w, map_location=map_location, weights_only=False)
+        except TypeError:
+            # For older PyTorch versions that do not support weights_only
+            ckpt = torch.load(w, map_location=map_location)
         model.append(ckpt['ema' if ckpt.get('ema') else 'model'].float().fuse().eval())  # FP32 model
 
     # Compatibility updates
@@ -128,7 +133,7 @@ def attempt_load(weights, map_location=None, inplace=True):
             m._non_persistent_buffers_set = set()  # pytorch 1.6.0 compatibility
 
     if len(model) == 1:
-        return model[-1]  # return model
+        return model[0]  # return single model
     else:
         print('Ensemble created with %s\n' % weights)
         for k in ['names', 'stride']:

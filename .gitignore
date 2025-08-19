@@ -1,0 +1,58 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+env/
+venv/
+ENV/
+.env
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Weight files
+*.pt
+*.pth
+*.weights
+*.onnx
+
+
+# Model checkpoints and tensorboard logs
+runs/
+all_json_results_df/
+blur_demo_output_new_4/
+mnt/
+WIDER_train/
+WIDER_val/
+yolov7_all_max_faces_images/
+occluded_faces_analysis/
+visualize_demo/
+weights/
+.runs/
+events.out.tfevents.*
+*.log
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# CUDA compilation files
+*.o
+*.cubin
+*.fatbin
