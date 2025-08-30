@@ -43,16 +43,21 @@ dist/
 build/
 *.egg-info/
 
-# Weight files
+# Weight files and model files
 *.pt
-*.sh
-*.json
-*.png
-
-*.md
 *.pth
 *.weights
 *.onnx
+
+# Script files (temporary/generated)
+*.sh
+
+# Data files (results/temporary)
+*.json
+*.png
+
+# Documentation files (generated/temporary)
+*.md
 
 
 # Model checkpoints and tensorboard logs
@@ -68,6 +73,7 @@ visualize_demo/
 weights/
 .runs/
 events.out.tfevents.*
+# Log files
 *.log
 blur_dataset_README.md
 # IDE specific files
@@ -75,8 +81,7 @@ blur_dataset_README.md
 .vscode/
 *.swp
 *.swo
-merge_enhanced_wider_face_and_closed_not_augmented.json
-merge_stats.json
+# Temporary/test Python files
 analyst_easy_hard_medium.py
 blur_dataset_analysis.py
 conpare_visualize_two_model.py
@@ -105,6 +110,8 @@ test_single_image_landmarks.py
 visualize_json_results.py
 yolov7_gd_face_dataframe_predict.py
 yolov7_top_left_pad_face_dataframe_predict.py
+
+# Temporary/test text files
 analyze_wider_face.txt
 guide_train.txt
 report_for_detecting_multi_scale.txt
