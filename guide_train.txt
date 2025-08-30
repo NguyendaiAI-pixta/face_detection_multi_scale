@@ -1,4 +1,0 @@
-Chạy merge_datasets.py để tạo enhanced dataset
-Sử dụng progressive_train.sh cho training staged
-Monitor kết quả với TensorBoard
-Fine-tune hyperparameters theo domain cụ thể
