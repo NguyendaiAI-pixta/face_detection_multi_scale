@@ -1,0 +1,9 @@
+nc: 1
+
+# class names
+names: [ 'face']
+train: enhanced_face_dataset_wider_face_and_closed/train/images/
+val: enhanced_face_dataset_wider_face_and_closed/val/images/
+
+# Disable keypoints
+kpt_label: False

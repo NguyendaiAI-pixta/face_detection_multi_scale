@@ -1,0 +1,22 @@
+# Multi-dataset configuration for enhanced face detection
+# Recommended data distribution for optimal training
+
+# train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
+train: [
+  "WIDER_train/images/",     # 16,551 images - base dataset
+  "/mnt/md0/projects/nguyendai-footage/roboflow/close_face_new/train/images",            # 2,845 images - challenging scenarios  
+]
+
+val: [
+  "WIDER_val/images/",       # 3,226 images - standard validation
+  "/mnt/md0/projects/nguyendai-footage/roboflow/close_face_new/val/images",        # 571 images - challenging validation
+]
+
+# number of classes  
+nc: 1
+
+# class names
+names: ['face']
+
+# Data augmentation weights (optional)
+dataset_weights: [0.4, 0.25, 0.1, 0.15, 0.1]  # Weight cho từng dataset
