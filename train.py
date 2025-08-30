@@ -16,7 +16,7 @@ import torch.optim as optim
 import torch.optim.lr_scheduler as lr_scheduler
 import torch.utils.data
 import yaml
-from torch.cuda import amp
+from torch import amp  # Import from torch.amp instead of torch.cuda.amp
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
@@ -98,13 +98,59 @@ def train(hyp, opt, device, tb_writer=None):
     train_path = data_dict['train']
     test_path = data_dict['val']
 
-    # Freeze
+    # Freeze layers up to specified layer number
     freeze = []  # parameter names to freeze (full or partial)
-    for k, v in model.named_parameters():
-        v.requires_grad = True  # train all layers
-        if any(x in k for x in freeze):
-            print('freezing %s' % k)
-            v.requires_grad = False
+    freeze_until_layer = getattr(opt, 'freeze_until', None)  # Get from command line or default to None
+    
+    if freeze_until_layer is not None:
+        print(f'{colorstr("Layer Freezing:")} Freezing layers 0 to {freeze_until_layer}')
+        
+        # Count layers and freeze based on layer index
+        frozen_params = 0
+        trainable_params = 0
+        frozen_layers = set()
+        trainable_layers = set()
+        
+        for name, param in model.named_parameters():
+            # Extract layer number from parameter name (e.g., "model.0.conv.weight" -> layer 0)
+            layer_num = None
+            if 'model.' in name:
+                parts = name.split('.')
+                if len(parts) >= 2 and parts[1].isdigit():
+                    layer_num = int(parts[1])
+            
+            # Freeze parameters for layers 0 to freeze_until_layer
+            if layer_num is not None and layer_num <= freeze_until_layer:
+                param.requires_grad = False
+                frozen_params += param.numel()
+                frozen_layers.add(layer_num)
+                if rank in [-1, 0]:  # Only print from main process
+                    logger.info(f'Freezing layer {layer_num}: {name}')
+            else:
+                param.requires_grad = True
+                trainable_params += param.numel()
+                if layer_num is not None:
+                    trainable_layers.add(layer_num)
+        
+        if rank in [-1, 0]:  # Only print from main process
+            total_params = frozen_params + trainable_params
+            trainable_ratio = trainable_params / total_params * 100 if total_params > 0 else 0
+            
+            logger.info(f'\n{colorstr("Freezing Summary:")}')
+            logger.info(f'Freeze until layer: {freeze_until_layer}')
+            logger.info(f'Frozen layers: {sorted(frozen_layers)}')
+            logger.info(f'Trainable layers: {sorted(trainable_layers)}')
+            logger.info(f'Frozen parameters: {frozen_params:,}')
+            logger.info(f'Trainable parameters: {trainable_params:,}')
+            logger.info(f'Total parameters: {total_params:,}')
+            logger.info(f'Trainable ratio: {trainable_ratio:.2f}%')
+    else:
+        # Default behavior - train all layers
+        for k, v in model.named_parameters():
+            v.requires_grad = True  # train all layers
+            if any(x in k for x in freeze):
+                print('freezing %s' % k)
+                v.requires_grad = False
 
     # Optimizer
     nbs = 64  # nominal batch size
@@ -175,7 +221,12 @@ def train(hyp, opt, device, tb_writer=None):
         # Epochs
         start_epoch = ckpt['epoch'] + 1
         if opt.resume:
-            assert start_epoch > 0, '%s training to %g epochs is finished, nothing to resume.' % (weights, epochs)
+            # Remove assertion to allow fine-tuning from completed models
+            # assert start_epoch > 0, '%s training to %g epochs is finished, nothing to resume.' % (weights, epochs)
+            if epochs <= ckpt['epoch']:
+                logger.info('%s has been trained for %g epochs. Forcing fine-tuning for %g additional epochs.' %
+                          (weights, ckpt['epoch'], epochs))
+                start_epoch = 0  # Start fine-tuning from epoch 0
         if epochs < start_epoch:
             logger.info('%s has been trained for %g epochs. Fine-tuning for %g additional epochs.' %
                         (weights, ckpt['epoch'], epochs))
@@ -310,7 +361,7 @@ def train(hyp, opt, device, tb_writer=None):
     maps = np.zeros(nc)  # mAP per class
     results = (0, 0, 0, 0, 0, 0, 0)  # P, R, mAP@.5, mAP@.5-.95, val_loss(box, obj, cls)
     scheduler.last_epoch = start_epoch - 1  # do not move
-    scaler = amp.GradScaler(enabled=cuda)
+    scaler = amp.GradScaler(enabled=cuda)  # Use enabled parameter instead of device string
     compute_loss = ComputeLoss(model, kpt_label=kpt_label)  # init loss class
     logger.info(f'Image sizes {imgsz} train, {imgsz_test} test\n'
                 f'Using {dataloader.num_workers} dataloader workers\n'
@@ -371,7 +422,7 @@ def train(hyp, opt, device, tb_writer=None):
                     imgs = F.interpolate(imgs, size=ns, mode='bilinear', align_corners=False)
 
             # Forward
-            with amp.autocast(enabled=cuda):
+            with amp.autocast(device_type='cuda' if cuda else 'cpu', enabled=True):
                 pred = model(imgs)  # forward
                 loss, loss_items = compute_loss(pred, targets.to(device))  # loss scaled by batch_size
                 if rank != -1:
@@ -565,6 +616,7 @@ if __name__ == '__main__':
     parser.add_argument('--save_period', type=int, default=-1, help='Log model after every "save_period" epoch')
     parser.add_argument('--artifact_alias', type=str, default="latest", help='version of dataset artifact to be used')
     parser.add_argument('--kpt-label', type=int, default=5, help='number of keypoints')
+    parser.add_argument('--freeze-until', type=int, default=None, help='freeze layers until this layer number (e.g., 37 for backbone)')
     opt = parser.parse_args()
 
     # Set DDP variables

@@ -8,7 +8,35 @@ __pycache__/
 env/
 venv/
 ENV/
+blur_demo_output_new_4/
+compare-visualize-two-model_640/
+compare-visualize-two-model_3840/
+comparison_results/
+enhanced_face_dataset_wider_face_and_closed/
+invalid_analysis/
+json_results_df_multi_scale/
+json_results_df_multi_scale_960_1600/
+max_faces_images/
+max_faces_images_960_1600/
+occluded_faces_analysis/
+result_json_best_3840/
+result_json_v7_face_w6_model_640/
+review_quality_model/
+runs/
+test_api_only/
+test_api_only_best/
+test_script_only_gpu2/
+verified_face_results/
+visualizations_from_json/
+visualize_2904_item_ng/
+visualize_2904_item_ng_best_pt_new/
+visualize_3840_two_model_fix_save_json/
+visualize_sliding_windown_production/
+yolov7_all_max_faces_images/
+api_predict_json_results_df_multi_scale_640_3840_new/
+api_predict_max_faces_images_640_3840_new/
 .env
+
 
 # Distribution / packaging
 dist/
@@ -17,6 +45,11 @@ build/
 
 # Weight files
 *.pt
+*.sh
+*.json
+*.png
+
+*.md
 *.pth
 *.weights
 *.onnx
@@ -36,13 +69,47 @@ weights/
 .runs/
 events.out.tfevents.*
 *.log
-
+blur_dataset_README.md
 # IDE specific files
 .idea/
 .vscode/
 *.swp
 *.swo
-
+merge_enhanced_wider_face_and_closed_not_augmented.json
+merge_stats.json
+analyst_easy_hard_medium.py
+blur_dataset_analysis.py
+conpare_visualize_two_model.py
+convert_widerface_to_yolo.py
+demo_dual_models.py
+demo_full_blur.py
+demo_json_comparison.py
+demo_resize_comparison.py
+demo_shared_utilities.py
+dowload_data_from_roboflow.py
+dual_preprocess_face_detection.py
+enhanced_multi_scale_face_detector.py
+face_distribution_comparison.py
+face_person_verification.py
+find_invalid_faces.py
+full_image_blur_with_bbox.py
+hyperparameter_tuning_guide.py
+merge_datasets.py
+multi_scale_sliding_windown.py
+optimized_multi_scale_detector.py
+predict_folder_faces.py
+production_multi_scale_detector.py
+reanalyze_detection_stats.py
+test_scale_weights.py
+test_single_image_landmarks.py
+visualize_json_results.py
+yolov7_gd_face_dataframe_predict.py
+yolov7_top_left_pad_face_dataframe_predict.py
+analyze_wider_face.txt
+guide_train.txt
+report_for_detecting_multi_scale.txt
+requirements_new.txt
+train.txt
 # OS specific
 .DS_Store
 .DS_Store?
